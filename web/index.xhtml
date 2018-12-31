@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<style type="text/css">
+   /** Demo **/
+   .ui-grid-row .ui-grid-col-2,
+   .ui-grid-row .ui-grid-col-10 {
+      padding: 0.5em 0;
+   }
+
+   .ui-galleria {
+      width: 100%;
+      height: 100%;
+   }
+   .ui-outputlabel {
+      font-weight: bold;
+   }
+
+   .ui-orderlist .ui-orderlist-list {
+      height: auto;
+   }
+
+   .ui-orderlist .ui-grid-row .ui-grid-col-2,
+   .ui-orderlist .ui-grid-row .ui-grid-col-10 {
+      padding: 0;
+   }
+</style>
+
+   <h:form>
+
+      <h:head>
+         <link rel="stylesheet" type="text/css" href="css/konak.css"/>
+      </h:head>
+
+      <h:body>
+
+         <p:panel style="border-width: 0px">
+            <h:panelGrid columns="2" columnClasses="width50,width50" style="text-align: center; border-width: 0px;width: 100% ">
+
+               <p:column>
+                  <h:panelGrid columns="1" style="border-width: 0px;">
+                     <p:outputLabel value="Safranbolu Konağı"
+                                    style="font-family: 'Comic Sans MS'; font-size: 30px; alignment: center">
+                     </p:outputLabel>
+
+                     <p:outputLabel value="Çeşme Mahallesi Arasta Arkası Sokak No:11 Safranbolu. Telefon : 0370 725 41 65"
+                                    style="font-family: 'Comic Sans MS'; font-size: 15px; alignment: center">
+                     </p:outputLabel>
+                  </h:panelGrid>
+               </p:column>
+               <p:column>
+                  <h:outputLink target="_blank" value="https://www.facebook.com/profile.php?id=100028314272280">
+                     <h:graphicImage url="/social/facebook.png"></h:graphicImage>
+                  </h:outputLink>
+                  <p:spacer width="5"></p:spacer>
+                  <h:outputLink target="_blank" value="https://twitter.com/KonagSafranbolu">
+                     <h:graphicImage url="/social/twitter.jpeg"></h:graphicImage>
+                  </h:outputLink>
+                  <p:spacer width="5"></p:spacer>
+                  <h:outputLink target="_blank" value="https://www.instagram.com/safranbolukonagi78/">
+                     <h:graphicImage url="/social/instagram.jpeg"></h:graphicImage>
+                  </h:outputLink>
+               </p:column>
+
+            </h:panelGrid>
+         </p:panel>
+
+
+
+
+         <h:panelGroup style="alignment: center" styleClass="ui-fluid">
+
+            <p:tabMenu>
+               <p:menuitem value="Ana Sayfa" action="#{anasayfaView.yonlendirme(1)}" update="panel">
+
+               </p:menuitem>
+               <p:menuitem value="Hakkımızda" action="#{anasayfaView.yonlendirme(2)}" update="panel">
+
+               </p:menuitem>
+               <p:menuitem value="Galeri" action="#{anasayfaView.yonlendirme(3)}" update="panel">
+
+               </p:menuitem>
+
+               <p:menuitem value="Odalarımız" action="#{anasayfaView.yonlendirme(4)}" update="panel">
+
+               </p:menuitem>
+            </p:tabMenu>
+
+
+         </h:panelGroup>
+
+
+
+         <h:panelGroup id="panel">
+            <p:panel id="anasayfa" rendered = "#{anasayfaView.ekranAnasayfa}">
+
+                  <h:panelGrid columns="2" columnClasses="width50,width50">
+                     <p:galleria value="#{anasayfaView.images}" var="image" styleClass="ui-galleria">
+                        <h:graphicImage value="/anasayfaImages/#{image}" width="100%" height="100%">
+
+                        </h:graphicImage>
+                     </p:galleria>
+                     <p:panel header="Rezervasyon Bağlantıları">
+                        <h:outputLink value="https://www.tripadvisor.com.tr/Hotel_Review-g298009-d12930946-Reviews-Safranbolu_Konagi-Safranbolu.html"
+                                      target="_blank">
+                           <p:outputLabel value="Trip Advisor"></p:outputLabel>
+                        </h:outputLink>
+                        <br></br>
+                        <h:outputLink value="https://www.otelz.com/otel/safranbolu-konagi-11855#.XBPpihMzadk"
+                                      target="_blank">
+                           <p:outputLabel value="OtelZ"></p:outputLabel>
+                        </h:outputLink>
+                     </p:panel>
+                  </h:panelGrid>
+
+            </p:panel>
+
+            <p:panel id="hakkimizda" rendered = "#{anasayfaView.ekranHakkimizda}">
+               <p:outputLabel value="2016'dan beri işletmeye devam ettiğimiz Safranbolu Konağı,
+                  Safranbolu'nun tarihi dokusunu konağımızda yansıtarak,
+                  siz değerli misafirlerimizi tarihin içinde bir yolculuğa götürüyor. Tarihi Safranbolu'nun tam
+                  merkezinde yer alan Safranbolu Konağı geçmişi ve günümüzü neredeyse aynı anda yaşatıyor."
+                  style="width: 50%">
+
+               </p:outputLabel>
+            </p:panel>
+
+            <p:panel id = "galeri" rendered = "#{anasayfaView.ekranGaleri}">
+                  <p:outputLabel value="Galeri Galeri"></p:outputLabel>
+                  <p:dataGrid value="#{anasayfaView.images}" columns="4" var="image">
+                     <h:column>
+                        <h:graphicImage url="/anasayfaImages/#{image}" width="80%" height="20%"/>
+                     </h:column>
+
+                  </p:dataGrid>
+            </p:panel>
+
+            <p:panel id="odalarimiz" rendered = "#{anasayfaView.ekranOdalarimiz}">
+               <p:accordionPanel>
+                  <p:tab title="Deluxe Aile Odası">
+                     <h:panelGrid columns="2" cellpadding="5">
+                        <h:graphicImage url="/anasayfaImages/hotel3.jpg" width="90%" height="20%"/>
+                        <h:outputText
+                                value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+                          His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                          Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
+                          but given to ruthless violence whenever anything stands against the good of the family." />
+                     </h:panelGrid>
+                  </p:tab>
+
+                  <p:tab title="Aile Odası">
+                     <h:panelGrid columns="2" cellpadding="5">
+                        <h:graphicImage url="/anasayfaImages/hotel3.jpg" width="90%" height="20%"/>
+                        <h:outputText
+                                value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+                          His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                          Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
+                          but given to ruthless violence whenever anything stands against the good of the family." />
+                     </h:panelGrid>
+                  </p:tab>
+
+
+                  <p:tab title="Standart Oda">
+                     <h:panelGrid columns="2" cellpadding="5">
+                        <h:graphicImage url="/anasayfaImages/hotel3.jpg" width="80%" height="20%"/>
+                        <h:outputText
+                                value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+                          His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                          Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,
+                          but given to ruthless violence whenever anything stands against the good of the family." />
+                     </h:panelGrid>
+                  </p:tab>
+               </p:accordionPanel>
+            </p:panel>
+         </h:panelGroup>
+
+      </h:body>
+
+
+   </h:form>
+
+
+
+
+
+
+
+</html>
