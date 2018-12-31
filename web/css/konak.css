@@ -1,0 +1,13 @@
+.width25{
+    width: 25%;
+    border: 0px !important;
+    vertical-align: top;
+}
+.width50{
+    width: 50%;
+    border: 0px!important;
+    vertical-align: top;
+}
+.align-top{
+    vertical-align: top;
+}

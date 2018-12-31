@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<style type="text/css">
+   /** Demo **/
+   .ui-grid-row .ui-grid-col-2,
+   .ui-grid-row .ui-grid-col-10 {
+      padding: 0.5em 0;
+   }
+
+   .ui-galleria {
+      width: 100%;
+      height: 100%;
+   }
+   .ui-outputlabel {
+      font-weight: bold;
+   }
+
+   .ui-orderlist .ui-orderlist-list {
+      height: auto;
+   }
+
+   .ui-orderlist .ui-grid-row .ui-grid-col-2,
+   .ui-orderlist .ui-grid-row .ui-grid-col-10 {
+      padding: 0;
+   }
+</style>
+
+   <h:form>
+
+      <h:head>
+         <link rel="stylesheet" type="text/css" href="css/konak.css"/>
+      </h:head>
+
+      <h:body>
+
+         <p:panel style="border-width: 0px">
+            <h:panelGrid columns="2" columnClasses="width50,width50" style="text-align: center; border-width: 0px;width: 100% ">
+
+               <p:column>
+                  <h:panelGrid columns="1" style="border-width: 0px;">
+                     <p:outputLabel value="Safranbolu Konağı"
+                                    style="font-family: 'Comic Sans MS'; font-size: 30px; alignment: center">
+                     </p:outputLabel>
+
+                     <p:outputLabel value="Çeşme Mahallesi Arasta Arkası Sokak No:11 Safranbolu. Telefon : 0370 725 41 65"
+                                    style="font-family: 'Comic Sans MS'; font-size: 15px; alignment: center">
+                     </p:outputLabel>
+                  </h:panelGrid>
+               </p:column>
+
+
+            </h:panelGrid>
+         </p:panel>
+
+
+
+
+         <h:panelGroup style="alignment: center" styleClass="ui-fluid">
+
+            <p:tabMenu>
+               <p:menuitem value="Ana Sayfa" action="#{menu.yonlendirme(1)}">
+
+               </p:menuitem>
+               <p:menuitem value="Hakkımızda" action="#{menu.yonlendirme(1)}">
+
+               </p:menuitem>
+               <p:menuitem value="Galeri" action="#{menu.yonlendirme(1)}" up>
+
+               </p:menuitem>
+            </p:tabMenu>
+
+            <p:galleria value="#{anasayfaView.images}" var="image" styleClass="ui-galleria">
+               <p:graphicImage value="/anasayfaImages/#{image}" ></p:graphicImage>
+            </p:galleria>
+         </h:panelGroup>
+
+
+
+      </h:body>
+
+
+   </h:form>
+
+
+
+
+
+
+
+</html>
